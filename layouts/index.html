@@ -1,0 +1,50 @@
+{{ define "body" }}
+<div class="container">
+  <div class="content noprint"><a class="button is-medium is-link" href="home.resume.url">Resume</a></div>
+  <h1 class="title">About Me</h1>
+    <div class="content">
+      home.about_me|markdown|safe
+    </div>
+  <h1 class="title">My Skills</h1>
+    <div class="content">
+  </div>
+  <h1 class="title">Blog</h1>
+    <p class="subtitle is-5"><a href="/blog/">View all articles</a></p>
+    <div class="box">
+      <div class="content">
+        <p class="title is-4"><a href="article">article.title</a></p>
+        <p class="subtitle is-6">article.subtitle</p>
+        <div class="tags">
+          <span class="tag">last_edited</span> &nbsp;
+          <a class="tag is-medium" href="filter_by_tag?tag=tag">tag</a>
+        </div>
+      </div>
+    </div>
+  <h1 class="title">My Projects</h1>
+  <p class="subtitle is-5"><a href="/projects/">View all projects</a></p>
+  <div class="columns">
+    <div class="column is-half">
+      <div class="card">
+        <!-- TODO if embed -->
+        <div class="noprint">project.embed.html</div>
+        <div class="printonly"><div class="card-image">
+          <figure class="image is-16by9" >
+            <img src="project.image.image.url" alt="project.title">
+          </figure>
+        </div></div>
+        <!-- TOTO if no embed -->
+        <div class="card-image">
+          <figure class="image is-16by9" >
+            <img src="project.image.image.url" alt="project.title">
+          </figure>
+        </div>
+        <div class="card-content">
+          <p class="title is-4"><a href="project.url">project.title</a></p>
+          <p class="title is-4">project.title</p>
+          <div class="content">project.description|markdown|safe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

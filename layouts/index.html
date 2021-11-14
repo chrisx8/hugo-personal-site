@@ -9,7 +9,7 @@
     <div class="box">
       <div class="content">
         {{ range first 2 (where (where .Site.RegularPages "Type" "blog") "File.Dir" "blog/") }}
-          {{ partial "partials/blog_entry.html" . }}
+          {{ partial "blog_entry.html" . }}
         {{ end }}
       </div>
     </div>

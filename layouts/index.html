@@ -16,31 +16,15 @@
     </div>
   </div>
   {{ end }}
+  {{ $projects := where .Site.RegularPages "Section" "projects"}}
+  {{ if $projects }}
   <h1 class="title">My Projects</h1>
   <p class="subtitle is-5"><a href="/projects/">View all projects</a></p>
   <div class="columns">
-    <div class="column is-half">
-      <div class="card">
-        <!-- TODO if embed -->
-        <div class="noprint">project.embed.html</div>
-        <div class="printonly"><div class="card-image">
-          <figure class="image is-16by9" >
-            <img src="project.image.image.url" alt="project.title">
-          </figure>
-        </div></div>
-        <!-- TOTO if no embed -->
-        <div class="card-image">
-          <figure class="image is-16by9" >
-            <img src="project.image.image.url" alt="project.title">
-          </figure>
-        </div>
-        <div class="card-content">
-          <p class="title is-4"><a href="project.url">project.title</a></p>
-          <p class="title is-4">project.title</p>
-          <div class="content">project.description|markdown|safe</div>
-        </div>
-      </div>
-    </div>
+    {{ range first 2 $projects }}
+      {{ partial "project.html" . }}
+    {{ end }}
   </div>
+  {{ end }}
 </div>
 {{ end }}

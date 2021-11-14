@@ -1,0 +1,34 @@
+<div class="column is-half">
+  <div class="card">
+    {{ if .Params.EmbedURL }}
+    <div class="embed">
+      <iframe class="frame" frameborder="0" src="{{ .Params.EmbedURL }}" title="{{ .Title }}"></iframe>
+    </div>
+    {{ if .Params.ImageURL }}
+    <div class="printonly">
+      <div class="card-image">
+        <figure class="image is-16by9" >
+          <img src="{{ .Params.ImageURL }}" alt="{{ .Title }}">
+        </figure>
+      </div>
+    </div>
+    {{ end }}
+    {{ else if .Params.ImageURL }}
+    <div class="card-image">
+      <figure class="image is-16by9" >
+        <img src="{{ .Params.ImageURL }}" alt="{{ .Title }}">
+      </figure>
+    </div>
+    {{ end }}
+    <div class="card-content">
+      {{ if .Params.ProjectURL }}
+      <p class="title is-4"><a href="{{ .Params.ProjectURL }}">{{ .Title }}</a></p>
+      {{ else }}
+      <p class="title is-4">{{ .Title }}</p>
+      {{ end }}
+      <div class="content">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</div>

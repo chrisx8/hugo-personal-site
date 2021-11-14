@@ -1,0 +1,20 @@
+{{ define "body" }}
+<div class="container">
+  <h1 class="title">{{ .Title }}</h1>
+  {{ $counter := 0 }}
+  {{ range .Pages }}
+  {{ if not (mod $counter 2) }}
+  <div class="columns">
+  {{ end }}
+  	{{ partial "project.html" . }}
+  {{ if (mod $counter 2) }}
+  </div>
+  {{ end }}
+  {{ $counter = add $counter 1 }}
+  {{ else }}
+  <article class="message">
+    <div class="message-body">No projects has been posted yet.</div>
+  </article>
+  {{ end }}
+</div>
+{{ end }}

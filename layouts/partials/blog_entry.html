@@ -1,0 +1,9 @@
+<p class="title is-4">
+  <a href="{{ .Permalink }}">{{ .Title }}</a>
+</p>
+{{ if .Params.Subtitle }}
+<p class="subtitle is-6">{{ .Params.Subtitle }}</p>
+{{ end }}
+<div class="tags">
+  <span class="tag">{{ .Date | time.Format "Jan 2, 2006" }}</span> &nbsp;
+</div>

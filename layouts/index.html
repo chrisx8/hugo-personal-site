@@ -1,6 +1,8 @@
 {{ define "body" }}
 <div class="container">
-  <div class="content noprint"><a class="button is-medium is-link" href="home.resume.url">Resume</a></div>
+  {{ if .Params.ResumeURL }}
+  <div class="content noprint"><a class="button is-medium is-link" href="{{ .Params.resumeURL }}">Resume</a></div>
+  {{ end }}
   <div class="content">
     {{ .Content }}
   </div>

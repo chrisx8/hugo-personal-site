@@ -1,6 +1,7 @@
 ---
 title: "Home"
 date: 2021-11-13T22:04:36-05:00
+resumeURL: "/media/resume.pdf"
 draft: false
 ---
 

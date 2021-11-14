@@ -78,7 +78,14 @@
     </section>
     <footer class="hps-footer">
       <div class="content has-text-centered">
-        {{ block "footer" . }}{{ end }}
+        {{ $counter := 0 }}
+        {{ $numLinks := len .Site.Params.footerLinks }}
+        {{ range .Site.Params.footerLinks }}
+        {{ $counter = add $counter 1 }}
+        <a href="{{ index . 1 }}">{{ index . 0 }}</a>
+        {{ if not (eq $counter $numLinks) }} &middot; {{ end }}
+        {{ end }}
+        {{ if $numLinks }} <br> {{ end }}
         &copy; {{ now.Format "2006" }} {{ .Site.Copyright }}
       </div>
     </footer>

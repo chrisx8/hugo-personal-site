@@ -6,3 +6,7 @@ copyright = 'Example. All rights reserved.'
 [params]
 subtitle = 'Subtitle in Header'
 metaDescription = 'Meta Description'
+footerLinks = [
+	['Example', 'https://example.com'],
+	['GitHub', 'https://github.com'],
+]

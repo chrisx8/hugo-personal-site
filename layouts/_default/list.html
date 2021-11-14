@@ -3,7 +3,7 @@
 <div class="container">
   <h1 class="title">{{ .Title }}</h1>
   <div class="content">
-  {{ range .Pages }}
+  {{ range .Paginator.Pages }}
     {{ partial "article.html" . }}
   {{ else }}
     <article class="message">
@@ -11,5 +11,6 @@
     </article>
   {{ end }}
   </div>
+  {{ partial "pagination.html" . }}
 </div>
 {{ end }}

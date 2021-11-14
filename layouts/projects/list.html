@@ -2,19 +2,21 @@
 <div class="container">
   <h1 class="title">{{ .Title }}</h1>
   {{ $counter := 0 }}
-  {{ range .Pages }}
-  {{ if not (mod $counter 2) }}
+  {{ $numElements := .Paginator.NumberOfElements }}
+  {{ range .Paginator.Pages }}
+  {{ $counter = add $counter 1 }}
+  {{ if mod $counter 2 }}
   <div class="columns">
   {{ end }}
   	{{ partial "project.html" . }}
-  {{ if (mod $counter 2) }}
+  {{ if or (not (mod $counter 2)) (eq $counter $numElements) }}
   </div>
   {{ end }}
-  {{ $counter = add $counter 1 }}
   {{ else }}
   <article class="message">
     <div class="message-body">No projects has been posted yet.</div>
   </article>
   {{ end }}
+  {{ partial "pagination.html" . }}
 </div>
 {{ end }}

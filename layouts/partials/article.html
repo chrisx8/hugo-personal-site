@@ -1,5 +1,5 @@
 <p class="title is-4">
-  <a href="{{ .Permalink }}">{{ .Title }}</a>
+  <a href="{{ .Permalink | relURL }}">{{ .Title }}</a>
 </p>
 {{ if .Params.Subtitle }}
 <p class="subtitle is-6">{{ .Params.Subtitle }}</p>

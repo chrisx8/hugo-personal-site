@@ -1,7 +1,7 @@
 {{ define "body" }}
 <!-- Page for a Blog article -->
 {{ $pygmentsCSS := resources.Get "css/pygments.css" | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $pygmentsCSS.Permalink }}" integrity="{{ $pygmentsCSS.Data.Integrity }}">
+<link rel="stylesheet" href="{{ $pygmentsCSS.Permalink | relURL }}" integrity="{{ $pygmentsCSS.Data.Integrity }}">
 <div class="container article">
   <h1 class="title is-2">{{ .Title }}</h1>
   <p class="subtitle">{{ .Params.Subtitle }}</p>

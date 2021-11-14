@@ -4,15 +4,18 @@
   <div class="content">
     {{ .Content }}
   </div>
+  {{ $blogArticles := where .Site.RegularPages "Section" "blog"}}
+  {{ if $blogArticles }}
   <h1 class="title">Blog</h1>
-    <p class="subtitle is-5"><a href="/blog/">View all articles</a></p>
-    <div class="box">
-      <div class="content">
-        {{ range first 2 (where (where .Site.RegularPages "Type" "blog") "File.Dir" "blog/") }}
-          {{ partial "blog_entry.html" . }}
-        {{ end }}
-      </div>
+  <p class="subtitle is-5"><a href="/blog/">View all articles</a></p>
+  <div class="box">
+    <div class="content">
+      {{ range first 2 $blogArticles }}
+        {{ partial "article.html" . }}
+      {{ end }}
     </div>
+  </div>
+  {{ end }}
   <h1 class="title">My Projects</h1>
   <p class="subtitle is-5"><a href="/projects/">View all projects</a></p>
   <div class="columns">

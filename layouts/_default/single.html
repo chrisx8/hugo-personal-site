@@ -1,17 +1,18 @@
 {{ define "body" }}
 <!-- Page for a Blog article -->
 {{ $pygmentsCSS := resources.Get "css/pygments.css" | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $pygmentsCSS.Permalink }}" integrity="{{ $pygmentsCSS.Data.Integrity }}" media="screen">
+<link rel="stylesheet" href="{{ $pygmentsCSS.Permalink }}" integrity="{{ $pygmentsCSS.Data.Integrity }}">
 <div class="container article">
   <h1 class="title is-2">{{ .Title }}</h1>
   <p class="subtitle">{{ .Params.Subtitle }}</p>
   <p><i>Last updated on <strong>{{ .Date | time.Format "Jan 2, 2006" }}</strong></i></p>
-  <div class="space-20"></div>
+  <div class="subtitle is-6"></div>
   {{ if .Params.headerEmbedURL }}
   <div class="center">
     <div class="embed">
       <iframe class="frame" title="title" src="{{ .Params.headerEmbedURL }}" frameborder="0" allowfullscreen></iframe>
     </div>
+    <img class="printonly" src="{{ .Params.headerImageURL }}" alt="title">
   </div>
   {{ else if .Params.headerImageURL }}
   <div class="center">

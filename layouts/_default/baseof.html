@@ -27,8 +27,8 @@
     {{ $bulmaCSS := resources.Get "css/bulma.min.css" }}
     {{ $bulmaDarkCSS := resources.Get "css/bulma-prefers-dark.min.css" }}
     {{ $hpsCSS := resources.Get "css/hps.css" }}
-    {{ $css := slice $bulmaCSS $bulmaDarkCSS $hpsCSS | resources.Concat "css/bundle.css" | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}" media="screen">
+    {{ $bundledCSS := slice $bulmaCSS $bulmaDarkCSS $hpsCSS | resources.Concat "css/bundle.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $bundledCSS.Permalink }}" integrity="{{ $bundledCSS.Data.Integrity }}">
   </head>
   <body><div class="main">
     <nav class="navbar is-dark noprint">

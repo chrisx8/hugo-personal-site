@@ -79,13 +79,13 @@
     <footer class="hps-footer">
       <div class="content has-text-centered">
         {{ block "footer" . }}{{ end }}
-        &copy; {{ .Date.Format "2006" }} {{ .Site.Copyright }}
+        &copy; {{ now.Format "2006" }} {{ .Site.Copyright }}
       </div>
     </footer>
     <footer class="hps-print-footer">
       <small>
         <i>Printed from <a href="{{ .Site.BaseURL }}">{{ .Site.BaseURL }}</a></i><br>
-        &copy; {{ .Date.Format "2006" }} {{ .Site.Copyright }}
+        &copy; {{ now.Format "2006" }} {{ .Site.Copyright }}
       </small>
     </footer>
     {{ $hpsJS := resources.Get "js/hps.js" | minify | fingerprint }}

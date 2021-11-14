@@ -68,13 +68,13 @@
     <section class="section">
       {{ block "body" . }}{{ end }}
     </section>
-    <footer class="sps-footer">
+    <footer class="hps-footer">
       <div class="content has-text-centered">
         {{ block "footer" . }}{{ end }}
         &copy; {{ .Date.Format "2006" }} {{ .Site.Copyright }}
       </div>
     </footer>
-    <footer class="sps-print-footer">
+    <footer class="hps-print-footer">
       <small>
         <i>Printed from <a href="{{ .Site.BaseURL }}">{{ .Site.BaseURL }}</a></i><br>
         &copy; {{ .Date.Format "2006" }} {{ .Site.Copyright }}

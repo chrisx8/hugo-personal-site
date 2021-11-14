@@ -26,7 +26,7 @@
 .space-20 {
 	height: 20px
 }
-.sps-footer {
+.hps-footer {
 	position: absolute;
 	clear: both;
 	width: 100%;
@@ -44,10 +44,10 @@
 	.space-20 {
 		display: none
 	}
-	.sps-footer {
+	.hps-footer {
 		display: none
 	}
-	.sps-print-footer {
+	.hps-print-footer {
 		padding-top: 20px;
 	}
 }
@@ -55,7 +55,7 @@
 	.printonly {
 		display: none
 	}
-	.sps-print-footer {
+	.hps-print-footer {
 		display: none
 	}
 }

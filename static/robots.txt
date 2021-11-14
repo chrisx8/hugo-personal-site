@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /contact/
+Disallow: /media/
+Disallow: /css/
+Disallow: /img/
+Disallow: /js/

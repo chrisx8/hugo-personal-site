@@ -1,0 +1,7 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'My Site'
+copyright = 'Example. All rights reserved.'
+
+[params]
+subtitle = 'Subtitle in Header and Meta Description'

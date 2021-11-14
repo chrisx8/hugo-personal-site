@@ -1,0 +1,16 @@
+# Site config
+config.toml
+
+# Hugo builds
+*.lock
+/public
+
+## OS Files
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# OSX
+.DS_Store

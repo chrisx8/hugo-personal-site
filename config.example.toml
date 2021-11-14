@@ -4,4 +4,5 @@ title = 'My Site'
 copyright = 'Example. All rights reserved.'
 
 [params]
-subtitle = 'Subtitle in Header and Meta Description'
+subtitle = 'Subtitle in Header'
+metaDescription = 'Meta Description'

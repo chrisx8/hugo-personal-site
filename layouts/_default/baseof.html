@@ -6,17 +6,24 @@
   {{ $title = .Site.Title }}
 {{ end }}
 
+<!-- By default, use meta description in config.toml -->
+{{ $metaDescription := .Site.Params.metaDescription }}
+{{ if .Page.Params.subtitle }}
+  <!-- on blog pages (with subtitle), use subtitle as meta description -->
+  {{ $metaDescription = .Page.Params.subtitle }}
+{{ end }}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>{{ $title }}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="{{ .Site.Params.subtitle }}">
+    <meta name="description" content="{{ $metaDescription }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:url" content="{{ .Site.BaseURL }}">
     <meta property="og:title" content="{{ $title }}">
-    <meta property="og:description" content="{{ .Site.Params.subtitle }}">
+    <meta property="og:description" content="{{ $metaDescription }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ .Site.BaseURL }}/img/og-image.png">

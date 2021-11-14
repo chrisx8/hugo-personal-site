@@ -1,12 +1,8 @@
 {{ define "body" }}
 <div class="container">
   <div class="content noprint"><a class="button is-medium is-link" href="home.resume.url">Resume</a></div>
-  <h1 class="title">About Me</h1>
-    <div class="content">
-      home.about_me|markdown|safe
-    </div>
-  <h1 class="title">My Skills</h1>
-    <div class="content">
+  <div class="content">
+    {{ .Content }}
   </div>
   <h1 class="title">Blog</h1>
     <p class="subtitle is-5"><a href="/blog/">View all articles</a></p>

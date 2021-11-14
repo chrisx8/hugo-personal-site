@@ -1,5 +1,6 @@
 <!-- standard title = PageTitle | SiteTitle -->
-{{ $title := slice .Title " | " .Site.Title }}
+{{ $title := add .Title " | " }}
+{{ $title = add $title .Site.Title }}
 {{ if .IsHome }}
   <!-- homepage title = SiteTitle -->
   {{ $title = .Site.Title }}

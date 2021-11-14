@@ -1,0 +1,24 @@
+{{ define "body" }}
+<!-- List of Blog articles -->
+<div class="container">
+  <h1 class="title">{{ .Title }}</h1>
+  {{ if not .Pages }}
+  <article class="message">
+    <div class="message-body">No articles has been posted yet.</div>
+  </article>
+  {{ end }}
+  <div class="content">
+  {{ range .Pages }}
+    <p class="title is-4">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </p>
+    {{ if .Params.Subtitle }}
+    <p class="subtitle is-6">{{ .Params.Subtitle }}</p>
+    {{ end }}
+    <div class="tags">
+      <span class="tag">{{ .Date | time.Format "Jan 2, 2006" }}</span> &nbsp;
+    </div>
+  {{ end }}
+  </div>
+</div>
+{{ end }}

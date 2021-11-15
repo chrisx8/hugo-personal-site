@@ -1,5 +1,5 @@
 {{ define "body" }}
-<!-- Page for a Blog article -->
+<!-- Generic Page for a single content item -->
 {{ $pygmentsCSS := resources.Get "css/pygments.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $pygmentsCSS.Permalink | relURL }}" integrity="{{ $pygmentsCSS.Data.Integrity }}">
 <div class="container article">

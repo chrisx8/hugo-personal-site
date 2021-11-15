@@ -13,6 +13,13 @@
   {{ $metaDescription = .Page.Params.subtitle }}
 {{ end }}
 
+<!-- By default, og:type is "website" -->
+{{ $type := "website" }}
+{{ if .IsPage }}
+  <!-- og:type is "article" for blog posts -->
+  {{ $type = "article" }}
+{{ end }}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,7 +32,7 @@
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:description" content="{{ $metaDescription }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ $type }}">
     <meta property="og:image" content="{{ .Site.BaseURL }}img/og-image.png">
     <meta property="og:locale" content="en_US">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">

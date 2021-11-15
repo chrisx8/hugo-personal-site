@@ -8,6 +8,6 @@
 <div class="tags">
   <span class="tag is-link">{{ .Date | time.Format "Jan 2, 2006" }}</span> &nbsp;
   {{ range .Params.Tags }}
-  <a class="tag" href="/tags/{{ . }}/">{{ . }}</a> &nbsp;
+  <a class="tag" href="/tags/{{ . | lower }}/">{{ . }}</a> &nbsp;
   {{ end }}
 </div>

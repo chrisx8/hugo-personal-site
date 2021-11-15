@@ -10,3 +10,6 @@ footerLinks = [
 	['Example', 'https://example.com'],
 	['GitHub', 'https://github.com'],
 ]
+
+[taxonomies]
+tag = "tags"

@@ -2,6 +2,7 @@
 title: "Sample Article with Embed"
 subtitle: "This is a sample article with a YouTube embed"
 date: 2021-11-13T22:04:36-05:00
+tags: ["sample", "s2"]
 headerEmbedURL: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"
 headerImageURL: "/media/sample.png"
 draft: false

@@ -3,13 +3,14 @@
 <div class="container">
   <h1 class="title">{{ .Title }}</h1>
   <div class="content">
-  {{ range .Paginator.Pages }}
+    {{ .Content }}
+    {{ range .Paginator.Pages }}
     {{ partial "article.html" . }}
-  {{ else }}
+    {{ else }}
     <article class="message">
       <div class="message-body">No articles has been posted yet.</div>
     </article>
-  {{ end }}
+    {{ end }}
   </div>
   {{ partial "pagination.html" . }}
 </div>

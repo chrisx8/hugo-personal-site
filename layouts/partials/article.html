@@ -6,5 +6,8 @@
 <p class="subtitle is-6">{{ .Params.Subtitle }}</p>
 {{ end }}
 <div class="tags">
-  <span class="tag">{{ .Date | time.Format "Jan 2, 2006" }}</span> &nbsp;
+  <a class="tag is-link">{{ .Date | time.Format "Jan 2, 2006" }}</a> &nbsp;
+  {{ range .Params.Tags }}
+  <a class="tag" href="/tags/{{ . }}/">{{ . }}</a> &nbsp;
+  {{ end }}
 </div>

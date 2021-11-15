@@ -6,7 +6,11 @@
   <h1 class="title is-2">{{ .Title }}</h1>
   <p class="subtitle">{{ .Params.Subtitle }}</p>
   <p><i>Last updated on <strong>{{ .Date | time.Format "Jan 2, 2006" }}</strong></i></p>
-  <div class="subtitle is-6"></div>
+  <div class="tags">
+    {{ range .Params.Tags }}
+    <a class="tag is-medium" href="/tags/{{ . }}/">{{ . }}</a>
+    {{ end }}
+  </div>
   {{ if .Params.headerEmbedURL }}
   <div class="center">
     <div class="embed">

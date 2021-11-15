@@ -1,15 +1,11 @@
 {{ define "body" }}
 <!-- Generic List page -->
 <div class="container">
-  <h1 class="title">{{ .Title }} <a href="index.xml" class="tag">RSS Feed</a></h1>
+  <h1 class="title">{{ .Title }}</h1>
   <div class="content">
     {{ .Content }}
     {{ range .Paginator.Pages }}
     {{ partial "article.html" . }}
-    {{ else }}
-    <article class="message">
-      <div class="message-body">No articles has been posted yet.</div>
-    </article>
     {{ end }}
   </div>
   {{ partial "pagination.html" . }}

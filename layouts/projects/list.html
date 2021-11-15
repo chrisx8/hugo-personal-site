@@ -2,6 +2,9 @@
 <!-- List of projects -->
 <div class="container">
   <h1 class="title">{{ .Title }}</h1>
+  <div class="content">
+    {{ .Content }}
+  </div>
   {{ $counter := 0 }}
   {{ $numElements := .Paginator.NumberOfElements }}
   {{ range .Paginator.Pages }}

@@ -1,0 +1,21 @@
+{{ define "body" }}
+<!-- Page for a project -->
+<div class="container article">
+  <h1 class="title is-2">{{ .Title }}</h1>
+  <div class="content">
+    {{ .Content }}
+  </div>
+  {{ if .Params.EmbedURL }}
+  <div class="center">
+    <div class="embed">
+      <iframe class="frame" title="title" src="{{ .Params.EmbedURL }}" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <img class="printonly" src="{{ .Params.ImageURL }}" alt="title">
+  </div>
+  {{ else if .Params.ImageURL }}
+  <div class="center">
+    <img src="{{ .Params.ImageURL }}" alt="title">
+  </div>
+  {{ end }}
+</div>
+{{ end }}

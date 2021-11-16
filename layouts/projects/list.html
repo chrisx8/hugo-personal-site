@@ -1,26 +1,26 @@
-{{ define "body" }}
+{{- define "body" -}}
 <!-- List of projects -->
 <div class="container">
   <h1 class="title">{{ .Title }}</h1>
   <div class="content">
     {{ .Content }}
   </div>
-  {{ $counter := 0 }}
-  {{ $numElements := .Paginator.NumberOfElements }}
-  {{ range .Paginator.Pages }}
-  {{ $counter = add $counter 1 }}
-  {{ if mod $counter 2 }}
+  {{- $counter := 0 -}}
+  {{- $numElements := .Paginator.NumberOfElements -}}
+  {{- range .Paginator.Pages }}
+  {{- $counter = add $counter 1 -}}
+  {{- if mod $counter 2 }}
   <div class="columns">
-  {{ end }}
+  {{- end -}}
   	{{ partial "project.html" . }}
-  {{ if or (not (mod $counter 2)) (eq $counter $numElements) }}
+  {{- if or (not (mod $counter 2)) (eq $counter $numElements) }}
   </div>
-  {{ end }}
-  {{ else }}
+  {{- end -}}
+  {{- else }}
   <article class="message">
     <div class="message-body">No projects has been posted yet.</div>
   </article>
-  {{ end }}
+  {{- end -}}
   {{ partial "pagination.html" . }}
 </div>
-{{ end }}
+{{- end -}}

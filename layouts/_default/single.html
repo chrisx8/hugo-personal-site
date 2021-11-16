@@ -1,30 +1,30 @@
-{{ define "body" }}
+{{- define "body" -}}
 <!-- Generic Page for a single content item -->
-{{ $pygmentsCSS := resources.Get "css/pygments.css" | minify | fingerprint }}
+{{- $pygmentsCSS := resources.Get "css/pygments.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $pygmentsCSS.Permalink | relURL }}" integrity="{{ $pygmentsCSS.Data.Integrity }}">
 <div class="container article">
   <h1 class="title is-2">{{ .Title }}</h1>
   <p class="subtitle">{{ .Params.Subtitle }}</p>
   <p><i>Last updated on <strong>{{ .Date | time.Format "Jan 2, 2006" }}</strong></i></p>
   <div class="tags">
-    {{ range .Params.Tags }}
+    {{- range .Params.Tags }}
     <a class="tag is-medium" href="/tags/{{ . | lower }}/">{{ . }}</a>
-    {{ end }}
+    {{- end }}
   </div>
-  {{ if .Params.headerEmbedURL }}
+  {{- if .Params.headerEmbedURL }}
   <div class="center">
     <div class="embed">
       <iframe class="frame" title="title" src="{{ .Params.headerEmbedURL }}" frameborder="0" allowfullscreen></iframe>
     </div>
     <img class="printonly" src="{{ .Params.headerImageURL }}" alt="title">
   </div>
-  {{ else if .Params.headerImageURL }}
+  {{- else if .Params.headerImageURL }}
   <div class="center">
     <img src="{{ .Params.headerImageURL }}" alt="title">
   </div>
-  {{ end }}
+  {{- end }}
   <div class="content">
     {{ .Content }}
   </div>
 </div>
-{{ end }}
+{{- end -}}

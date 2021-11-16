@@ -1,33 +1,34 @@
-{{ define "body" }}
+{{- define "body" -}}
 <!-- homepage -->
 <div class="container">
-  {{ if .Params.ResumeURL }}
-  <div class="content noprint"><a class="button is-medium is-link" href="{{ .Params.resumeURL }}">Resume</a></div>
-  {{ end }}
+  {{- if .Params.ResumeURL }}
+  <div class="content noprint">
+    <a class="button is-medium is-link" href="{{ .Params.resumeURL }}">Resume</a></div>
+  {{- end }}
   <div class="content">
     {{ .Content }}
   </div>
-  {{ $blogArticles := where .Site.RegularPages "Section" "blog"}}
-  {{ if $blogArticles }}
+  {{- $blogArticles := where .Site.RegularPages "Section" "blog" -}}
+  {{- if $blogArticles }}
   <h1 class="title">Blog</h1>
   <p class="subtitle is-5"><a href="/blog/">View all articles</a></p>
   <div class="box">
     <div class="content">
-      {{ range first 2 $blogArticles }}
+      {{- range first 2 $blogArticles -}}
         {{ partial "article.html" . }}
-      {{ end }}
+      {{- end }}
     </div>
   </div>
-  {{ end }}
-  {{ $projects := where .Site.RegularPages "Section" "projects"}}
-  {{ if $projects }}
+  {{- end -}}
+  {{- $projects := where .Site.RegularPages "Section" "projects" -}}
+  {{- if $projects }}
   <h1 class="title">My Projects</h1>
   <p class="subtitle is-5"><a href="/projects/">View all projects</a></p>
   <div class="columns">
-    {{ range first 2 $projects }}
+    {{- range first 2 $projects -}}
       {{ partial "project.html" . }}
-    {{ end }}
+    {{- end }}
   </div>
-  {{ end }}
+  {{- end }}
 </div>
-{{ end }}
+{{- end -}}

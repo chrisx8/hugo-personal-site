@@ -1,27 +1,27 @@
 <!-- pagination buttons -->
-{{ if gt .Paginator.TotalPages 1 }}
+{{- if gt .Paginator.TotalPages 1 }}
 <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-  {{ if .Paginator.HasPrev }}
+  {{- if .Paginator.HasPrev }}
   <a href="{{ .Paginator.Prev.URL }}" class="button pagination-previous is-link">Prev</a>
-  {{ else }}
+  {{- else }}
   <a class="button pagination-previous" disabled>Prev</a>
-  {{ end }}
-  {{ if .Paginator.HasNext }}
+  {{- end -}}
+  {{- if .Paginator.HasNext }}
   <a href="{{ .Paginator.Next.URL }}" class="button pagination-next is-link">Next</a>
-  {{ else }}
+  {{- else }}
   <a class="button pagination-next" disabled>Next</a>
-  {{ end }}
+  {{- end }}
   <ul class="pagination-list">
-      {{ $currentPageNumber := .Paginator.PageNumber }}
-      {{ range .Paginator.Pagers }}
-      <li>
-          {{ if eq $currentPageNumber .PageNumber }}
-          <a class="button pagination-link is-dark" aria-label="Page {{ .PageNumber }}" id="current-pager-btn">{{ .PageNumber }} </a>
-          {{ else }}
-          <a href="{{ .URL }}" class="button pagination-link" aria-label="Go to Page {{ .PageNumber }}">{{ .PageNumber }} </a>
-          {{ end }}
-      </li>
-      {{ end }}
+    {{- $currentPageNumber := .Paginator.PageNumber -}}
+    {{- range .Paginator.Pagers }}
+    <li>
+      {{- if eq $currentPageNumber .PageNumber }}
+      <a class="button pagination-link is-dark" aria-label="Page {{ .PageNumber }}" id="current-pager-btn">{{ .PageNumber }} </a>
+      {{- else }}
+      <a href="{{ .URL }}" class="button pagination-link" aria-label="Go to Page {{ .PageNumber }}">{{ .PageNumber }} </a>
+      {{- end }}
+    </li>
+    {{- end }}
   </ul>
 </nav>
-{{ end }}
+{{- end -}}

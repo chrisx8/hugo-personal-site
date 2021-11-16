@@ -1,21 +1,21 @@
 <!-- standard title = PageTitle | SiteTitle -->
-{{ $title := add .Title " | " }}
-{{ $title = add $title .Site.Title }}
-{{ if .IsHome }}
+{{- $title := add .Title " | " -}}
+{{- $title = add $title .Site.Title -}}
+{{- if .IsHome -}}
   <!-- homepage title = SiteTitle -->
-  {{ $title = .Site.Title }}
-{{ end }}
+  {{- $title = .Site.Title -}}
+{{- end -}}
 
 <!-- By default, og:type is "website" -->
-{{ $ogType := "website" }}
+{{- $ogType := "website" -}}
 <!-- By default, use meta description in config.toml -->
-{{ $metaDescription := .Site.Params.metaDescription }}
-{{ if and (eq .Page.Section "blog") .IsPage }}
+{{- $metaDescription := .Site.Params.metaDescription -}}
+{{- if and (eq .Page.Section "blog") .IsPage -}}
   <!-- on blog pages (with subtitle), use subtitle as meta description -->
-  {{ $metaDescription = .Page.Params.subtitle }}
+  {{- $metaDescription = .Page.Params.subtitle -}}
   <!-- og:type is "article" for blog posts -->
-  {{ $ogType = "article" }}
-{{ end }}
+  {{- $ogType = "article" -}}
+{{- end -}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,17 +35,16 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
     <link rel="shortcut icon" href="/img/favicon.ico">
-    <!--[if lt IE 9]><script type="text/javascript" src="/js/html5shiv.min.js"></script><![endif]-->
-    {{ $bulmaCSS := resources.Get "css/bulma.min.css" }}
-    {{ $bulmaDarkCSS := resources.Get "css/bulma-prefers-dark.min.css" }}
-    {{ $hpsCSS := resources.Get "css/hps.css" }}
-    {{ $bundledCSS := slice $bulmaCSS $bulmaDarkCSS $hpsCSS | resources.Concat "css/bundle.css" | minify | fingerprint }}
+    {{- $bulmaCSS := resources.Get "css/bulma.min.css" -}}
+    {{- $bulmaDarkCSS := resources.Get "css/bulma-prefers-dark.min.css" -}}
+    {{- $hpsCSS := resources.Get "css/hps.css" -}}
+    {{- $bundledCSS := slice $bulmaCSS $bulmaDarkCSS $hpsCSS | resources.Concat "css/bundle.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $bundledCSS.Permalink | relURL }}" integrity="{{ $bundledCSS.Data.Integrity }}">
-    {{ if not (eq ".Page.Kind" "page") }}
-    {{ range .AlternativeOutputFormats }}
+    {{- if not (eq ".Page.Kind" "page") -}}
+    {{- range .AlternativeOutputFormats }}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $title | safeHTML }}
-    {{ end }}
-    {{ end }}
+    {{- end -}}
+    {{- end }}
   </head>
   <body><div class="main">
     <nav class="navbar is-dark noprint">
@@ -62,7 +61,6 @@
         </div>
         <div id="navMenu" class="navbar-menu">
           <div class="navbar-end">
-            <!-- TODO: rewrite with .Site.Sections -->
             <a class="navbar-item" href="/">Home</a>
             <a class="navbar-item" href="/blog/">Blog</a>
             <a class="navbar-item" href="/projects/">Projects</a>
@@ -87,14 +85,14 @@
     </section>
     <footer class="hps-footer">
       <div class="content has-text-centered">
-        {{ $counter := 0 }}
-        {{ $numLinks := len .Site.Params.footerLinks }}
-        {{ range .Site.Params.footerLinks }}
-        {{ $counter = add $counter 1 }}
+        {{- $counter := 0 -}}
+        {{- $numLinks := len .Site.Params.footerLinks }}
+        {{- range .Site.Params.footerLinks }}
+        {{- $counter = add $counter 1 }}
         <a href="{{ index . 1 }}">{{ index . 0 }}</a>
-        {{ if not (eq $counter $numLinks) }} &middot; {{ end }}
-        {{ end }}
-        {{ if $numLinks }} <br> {{ end }}
+        {{- if not (eq $counter $numLinks) }} &middot; {{ end }}
+        {{- end }}
+        {{- if $numLinks }} <br> {{ end }}
         &copy; {{ now.Format "2006" }} {{ .Site.Copyright }}
       </div>
     </footer>
@@ -104,7 +102,7 @@
         &copy; {{ now.Format "2006" }} {{ .Site.Copyright }}
       </small>
     </footer>
-    {{ $hpsJS := resources.Get "js/hps.js" | minify | fingerprint }}
+    {{- $hpsJS := resources.Get "js/hps.js" | minify | fingerprint }}
     <script async src="{{ $hpsJS.Permalink | relURL }}" integrity="{{ $hpsJS.Data.Integrity }}"></script>
   </div></body>
 </html>

@@ -1,0 +1,49 @@
+{{- define "body" -}}
+<!-- Contact form -->
+<!-- haxx: make it a "list" so Hugo would render it for me -->
+<div class="container">
+  <h1 class="title">Contact Me</h1>
+  <h2 class="subtitle">Want to get in touch with me? Please fill out the form.</h2>
+  <form method="POST" action="{{ .Site.Params.contactFormHandlerURL }}">
+    <!-- TODO: CSRF protection? -->
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input type="text" name="name" class="input" maxlength="100" minlength="1" required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input type="email" name="email" class="input" required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Subject</label>
+      <div class="control">
+        <input type="text" name="subject" class="input" maxlength="300">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Message</label>
+      <div class="control">
+        <textarea name="message" cols="40" rows="10" class="textarea" minlength="1" required></textarea>
+      </div>
+    </div>
+    <div class="field">
+      <script src="https://hcaptcha.com/1/api.js" async defer></script>
+      <div class="h-captcha" id="h-captcha" data-sitekey="{{ .Site.Params.hCaptchaSiteKey }}"></div>
+      <noscript>
+        <article class="message is-info">
+          <div class="message-header"><strong>Please enable JavaScript to send messages.</strong></div>
+        </article>
+      </noscript>
+    </div>
+    <div class="field">
+      <div class="control">
+        <button class="button is-link" type="submit">Send</button>
+      </div>
+    </div>
+  </form>
+</div>
+{{- end -}}

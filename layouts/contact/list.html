@@ -4,8 +4,8 @@
 <div class="container">
   <h1 class="title">Contact Me</h1>
   <h2 class="subtitle">Want to get in touch with me? Please fill out the form.</h2>
-  <form method="POST" action="{{ .Site.Params.contactFormHandlerURL }}">
-    <!-- TODO: CSRF protection? -->
+  {{ .Content }}
+  <form method="POST" action="{{ .Site.Params.contactFormProcessorURL }}">
     <div class="field">
       <label class="label">Name</label>
       <div class="control">
@@ -27,7 +27,7 @@
     <div class="field">
       <label class="label">Message</label>
       <div class="control">
-        <textarea name="message" cols="40" rows="10" class="textarea" minlength="1" required></textarea>
+        <textarea name="message" rows="10" class="textarea" minlength="1" required></textarea>
       </div>
     </div>
     <div class="field">

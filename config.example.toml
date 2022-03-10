@@ -4,7 +4,7 @@ title = 'My Site'
 copyright = 'Example. All rights reserved.'
 
 [params]
-contactFormHandlerURL = 'URL to the POST endpoint for contact form submission'
+contactFormProcessorURL = 'URL to the POST endpoint for contact form submission'
 hCaptchaSiteKey = 'Your hCaptcha Site Key'
 subtitle = 'Subtitle in Header'
 metaDescription = 'Meta Description'

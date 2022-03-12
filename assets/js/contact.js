@@ -31,6 +31,7 @@ async function submitContactForm(APIEndpoint) {
     const formData = extractFormData();
     const response = await fetch(APIEndpoint, {
         method: 'POST',
+        mode: 'cors',
         cache: 'no-cache',
         credentials: 'omit',
         headers: {
@@ -42,7 +43,7 @@ async function submitContactForm(APIEndpoint) {
     // check response
     const responseJSON = await response.json();
     if (response.ok) {
-        // form processed successfully. hide form, and show home button and
+        // form processed successfully. hide form, show home button and
         // success message.
         formElem.innerHTML = '<a class="button is-link" href="/">Homepage</a>';
         subtitleElem.innerHTML = responseJSON['message'];

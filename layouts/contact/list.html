@@ -5,7 +5,8 @@
   <h1 class="title">Contact Me</h1>
   <h2 class="subtitle">Want to get in touch with me? Please fill out the form.</h2>
   {{ .Content }}
-  <div id="form">
+  <form action="null://" id="form" target="hiddenFrame"
+    onsubmit="submitContactForm('{{ .Site.Params.contactFormProcessorURL }}')">
     <div class="field">
       <label class="label">Name</label>
       <div class="control">
@@ -21,7 +22,7 @@
     <div class="field">
       <label class="label">Subject</label>
       <div class="control">
-        <input type="text" name="subject" class="input" maxlength="300">
+        <input type="text" name="subject" class="input" maxlength="300" required>
       </div>
     </div>
     <div class="field">
@@ -41,11 +42,12 @@
     </div>
     <div class="field">
       <div class="control">
-        <button class="button is-link" onclick="submitContactForm('{{ .Site.Params.contactFormProcessorURL }}')">Send</button>
+        <button class="button is-link">Send</button>
       </div>
     </div>
-  </div>
+  </form>
   {{- $contactJS := resources.Get "js/contact.js" | minify | fingerprint }}
   <script async src="{{ $contactJS.Permalink | relURL }}" integrity="{{ $contactJS.Data.Integrity }}"></script>
 </div>
+<iframe class="is-hidden" name="hiddenFrame" width="0" height="0"></iframe>
 {{- end -}}

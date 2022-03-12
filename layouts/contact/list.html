@@ -3,8 +3,15 @@
 <!-- haxx: make it a "list" so Hugo would render it for me -->
 <div class="container">
   <h1 class="title">Contact Me</h1>
-  <h2 class="subtitle">Want to get in touch with me? Please fill out the form.</h2>
+  <h2 class="subtitle" id="subtitle">Want to get in touch with me? Please fill out the form.</h2>
   {{ .Content }}
+  <noscript>
+    <article class="message is-warning">
+      <div class="message-header" id="errors">
+        <strong>JavaScript is required for sending messages. Please enable JavaScript and try again.</strong>
+      </div>
+    </article>
+  </noscript>
   <form action="null://" id="form" target="hiddenFrame"
     onsubmit="submitContactForm('{{ .Site.Params.contactFormProcessorURL }}')">
     <div class="field">
@@ -34,11 +41,11 @@
     <div class="field">
       <script src="https://hcaptcha.com/1/api.js" async defer></script>
       <div class="h-captcha" id="h-captcha" data-sitekey="{{ .Site.Params.hCaptchaSiteKey }}"></div>
-      <noscript>
-        <article class="message is-info">
-          <div class="message-header"><strong>Please enable JavaScript to send messages.</strong></div>
-        </article>
-      </noscript>
+    </div>
+    <div class="field is-hidden" id="errorContainer">
+      <div class="message is-danger">
+        <div class="message-header is-danger" id="errorMessage"></div>
+      </div>
     </div>
     <div class="field">
       <div class="control">

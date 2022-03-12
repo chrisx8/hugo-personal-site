@@ -12,7 +12,7 @@
       </div>
     </article>
   </noscript>
-  <form action="dummy/" id="form" target="hiddenFrame"
+  <form action="dummy/" id="form" target="hiddenframe"
     onsubmit="submitContactForm('{{ .Site.Params.contactFormProcessorURL }}')">
     <div class="field">
       <label class="label">Name</label>
@@ -56,5 +56,5 @@
   {{- $contactJS := resources.Get "js/contact.js" | minify | fingerprint }}
   <script async src="{{ $contactJS.Permalink | relURL }}" integrity="{{ $contactJS.Data.Integrity }}"></script>
 </div>
-<iframe class="is-hidden" name="hiddenFrame" width="0" height="0"></iframe>
+<iframe class="is-hidden" name="hiddenframe" width="0" height="0"></iframe>
 {{- end -}}

@@ -17,6 +17,15 @@ function unhideElement(element) {
     element.classList.remove('is-hidden');
 }
 
+// toggle dark mode for captcha based on browser color scheme
+function setHcaptchaColorScheme() {
+    const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const hCaptcha = document.getElementById("h-captcha");
+    if (hCaptcha != null && darkMode) {
+        document.getElementById("h-captcha").setAttribute("data-theme", "dark");
+    }
+}
+
 // send form data to API
 async function submitContactForm() {
     // get data from form fields
@@ -63,5 +72,6 @@ async function submitContactForm() {
 formElem.onsubmit = function() {
     submitContactForm();
 };
-// then show form
+// then set color scheme and show form
+setHcaptchaColorScheme();
 unhideElement(formElem);

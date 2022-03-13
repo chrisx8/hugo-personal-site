@@ -37,17 +37,28 @@ async function submitContactForm() {
         'hcaptcha_response': document.getElementsByName('h-captcha-response')[0].value,
     };
     // send form to API
-    const response = await fetch(APIEndpoint, {
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'omit',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify(formData)
-    });
+    var response;
+    try {
+        // try to send response
+        response = await fetch(APIEndpoint, {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'omit',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            referrerPolicy: 'no-referrer',
+            body: JSON.stringify(formData)
+        });   
+    } catch (error) {
+        // if error occurs, show error and stop
+        console.error('An error occurred!\n' +
+                      'Please see the error message above for more information.');
+        unhideElement(errorContainerElem);
+        errorMessageElem.innerHTML = 'An error occurred! Please try again later.';
+        return;
+    }
     // check response
     const responseJSON = await response.json();
     if (response.ok) {
@@ -63,8 +74,7 @@ async function submitContactForm() {
         unhideElement(errorContainerElem);
         errorMessageElem.innerHTML = responseJSON['error'];
         // log to console for the nerds
-        console.log('An error occurred!');
-        console.log(responseJSON['error']);
+        console.error('An error occurred!\n' + responseJSON['error']);
     }
 }
 

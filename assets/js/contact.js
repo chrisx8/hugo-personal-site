@@ -4,16 +4,8 @@ const subtitleElem = document.getElementById('subtitle');
 const errorContainerElem = document.getElementById('errorContainer');
 const errorMessageElem = document.getElementById('errorMessage');
 
-// get data from form fields
-function extractFormData() {
-    return {
-        'name': document.getElementsByName('name')[0].value,
-        'email': document.getElementsByName('email')[0].value,
-        'subject': document.getElementsByName('subject')[0].value,
-        'message': document.getElementsByName('message')[0].value,
-        'hcaptcha_response': document.getElementsByName('h-captcha-response')[0].value,
-    }
-}
+// grab API endpoint url from data-api-endpoint tag on <script>
+const APIEndpoint = document.getElementById('contactJS').getAttribute('data-api-endpoint');
 
 // hide an HTML element
 function hideElement(element) {
@@ -26,9 +18,16 @@ function unhideElement(element) {
 }
 
 // send form data to API
-async function submitContactForm(APIEndpoint) {
+async function submitContactForm() {
+    // get data from form fields
+    const formData = {
+        'name': document.getElementsByName('name')[0].value,
+        'email': document.getElementsByName('email')[0].value,
+        'subject': document.getElementsByName('subject')[0].value,
+        'message': document.getElementsByName('message')[0].value,
+        'hcaptcha_response': document.getElementsByName('h-captcha-response')[0].value,
+    };
     // send form to API
-    const formData = extractFormData();
     const response = await fetch(APIEndpoint, {
         method: 'POST',
         mode: 'cors',
@@ -60,5 +59,9 @@ async function submitContactForm(APIEndpoint) {
     }
 }
 
-// on script load, show form
+// on script load, add onsubmit event handler to form
+formElem.onsubmit = function() {
+    submitContactForm();
+};
+// then show form
 unhideElement(formElem);

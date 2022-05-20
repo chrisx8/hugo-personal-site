@@ -8,7 +8,7 @@
   <p><i>Last updated on <strong>{{ .Date | time.Format "Jan 2, 2006" }}</strong></i></p>
   <div class="tags">
     {{- range .Params.Tags }}
-    <a class="tag is-medium" href="/tags/{{ . | lower }}/">{{ . }}</a>
+    <a class="tag is-medium" href="/tags/{{ . | urlize }}/">{{ . }}</a>
     {{- end }}
   </div>
   {{- if .Params.headerEmbedURL }}

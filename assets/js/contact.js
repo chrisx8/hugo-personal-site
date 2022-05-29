@@ -34,7 +34,7 @@ async function submitContactForm() {
         'email': document.getElementsByName('email')[0].value,
         'subject': document.getElementsByName('subject')[0].value,
         'message': document.getElementsByName('message')[0].value,
-        'hcaptcha_response': document.getElementsByName('h-captcha-response')[0].value,
+        'h_captcha_response': document.getElementsByName('h-captcha-response')[0].value,
     };
     // send form to API
     var response;

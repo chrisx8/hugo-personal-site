@@ -61,20 +61,21 @@ async function submitContactForm() {
     }
     // check response
     const responseJSON = await response.json();
+    const responseMsg = responseJSON['message'];
     if (response.ok) {
         // form processed successfully. hide form, show home button and
         // success message.
         formElem.innerHTML = '<a class="button is-link" href="/">Homepage</a>';
-        subtitleElem.innerHTML = responseJSON['message'];
+        subtitleElem.innerHTML = responseMsg;
         // log to console for the nerds
         console.log('Message submitted successfully!');
-        console.log(responseJSON['message']);
+        console.log(responseMsg);
     } else {
         // form returned errors. show error message.
         unhideElement(errorContainerElem);
-        errorMessageElem.innerHTML = responseJSON['error'];
+        errorMessageElem.innerHTML = responseMsg;
         // log to console for the nerds
-        console.error('An error occurred!\n' + responseJSON['error']);
+        console.error('An error occurred!\n' + responseMsg);
     }
 }
 
